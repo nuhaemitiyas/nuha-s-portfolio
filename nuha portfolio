@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuha Emitiyas — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600&family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F1E9D6;
+    --paper-2: #E7DAB8;
+    --card: #FAF5E7;
+    --ink: #201A12;
+    --ink-soft: #55493A;
+    --red: #B23A26;
+    --red-dark: #8E2C1B;
+    --blue: #2B4A85;
+    --blue-dark: #1F3763;
+    --cream: #FAF6EC;
+    --display: 'Fraunces', serif;
+    --body: 'Archivo', sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  ::selection{ background: var(--red); color: var(--cream); }
+
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px 22px 60px;
+  }
+
+  .block{
+    border: 4px solid var(--ink);
+  }
+
+  /* ---------- stamp / sticker elements ---------- */
+
+  .stamp{
+    display: inline-block;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    padding: 7px 13px;
+    transform: rotate(-3deg);
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    background: var(--red);
+    color: var(--cream);
+    padding: 46px 34px 34px;
+    margin-top: 10px;
+    position: relative;
+  }
+
+  .postmark{
+    position: absolute;
+    top: -18px;
+    left: 30px;
+    background: var(--cream);
+    color: var(--ink);
+    transform: rotate(-5deg);
+  }
+
+  h1.name{
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(48px, 9vw, 92px);
+    line-height: 0.94;
+    margin: 30px 0 20px;
+    color: var(--cream);
+    text-shadow: 7px 7px 0 var(--blue-dark);
+  }
+
+  .role-tag{
+    display: inline-block;
+    background: var(--cream);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 19px;
+    padding: 8px 16px;
+    transform: rotate(-1.5deg);
+    margin-bottom: 22px;
+  }
+
+  .pitch{
+    max-width: 56ch;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--cream);
+    margin: 0 0 28px;
+  }
+
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ticket{
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    background: var(--cream);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    padding: 9px 14px;
+  }
+  .ticket:nth-child(2n){ transform: rotate(1.2deg); }
+  .ticket:nth-child(2n+1){ transform: rotate(-1.2deg); }
+  .ticket:hover{ background: var(--blue); color: var(--cream); }
+
+  /* ---------- Section titles ---------- */
+
+  section{ margin-top: 56px; }
+
+  h2.section-title{
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(32px, 5vw, 46px);
+    margin: 0 0 26px;
+    display: inline-block;
+    text-shadow: 4px 4px 0 var(--red);
+  }
+
+  /* ---------- Skills ---------- */
+
+  .skill-row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 680px){ .skill-row{ grid-template-columns: 1fr; } }
+
+  .skill-card{
+    background: var(--card);
+    border: 4px solid var(--ink);
+    padding: 20px;
+  }
+  .skill-card:nth-child(1){ transform: rotate(-0.6deg); }
+  .skill-card:nth-child(3){ transform: rotate(0.6deg); }
+
+  .skill-card h3{
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 14px;
+    color: var(--ink-soft);
+  }
+
+  .pill-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill{
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 12.5px;
+    padding: 5px 11px;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+  }
+  .pill.b{ background: var(--blue); color: var(--cream); }
+  .pill.r{ background: var(--red); color: var(--cream); }
+
+  /* ---------- Projects ---------- */
+
+  .project{
+    border: 4px solid var(--ink);
+    padding: 30px 28px;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .project.a{ background: var(--card); }
+  .project.b{ background: var(--paper-2); }
+
+  .project-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .project h3{
+    font-family: var(--display);
+    font-weight: 800;
+    font-style: italic;
+    font-size: 28px;
+    margin: 0;
+  }
+
+  .stack-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .tag{
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11.5px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 4px 9px;
+  }
+
+  .project ul{
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 66ch;
+  }
+
+  .project li{
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 9px;
+  }
+  .project li::before{
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 15px;
+  }
+
+  .badge-metric{
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    background: var(--blue);
+    color: var(--cream);
+    padding: 3px 9px;
+    transform: rotate(-2deg);
+    margin-left: 6px;
+  }
+
+  /* ---------- Certificates + Achievements (corkboard) ---------- */
+
+  .cork{
+    background: var(--paper-2);
+    border: 4px solid var(--ink);
+    padding: 30px 26px;
+  }
+
+  .cork-cols{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  @media (max-width: 680px){ .cork-cols{ grid-template-columns: 1fr; } }
+
+  .cork h4{
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0 0 16px;
+    color: var(--ink-soft);
+  }
+
+  .clip{
+    background: var(--card);
+    border: 3px solid var(--ink);
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  .clip:nth-child(odd){ transform: rotate(-1.3deg); }
+  .clip:nth-child(even){ transform: rotate(1.1deg); }
+
+  .clip .when{
+    display: block;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--red-dark);
+    margin-top: 4px;
+  }
+
+  .vogue-badge{
+    margin-top: 18px;
+    background: var(--red);
+    color: var(--cream);
+    border: 4px solid var(--ink);
+    padding: 18px 20px;
+    text-align: center;
+    transform: rotate(-1deg);
+  }
+  .vogue-badge .title{
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 24px;
+    text-shadow: 3px 3px 0 var(--blue-dark);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .vogue-badge .sub{
+    font-family: var(--body);
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  /* ---------- Education ---------- */
+
+  .edu-ledger{
+    border: 4px solid var(--ink);
+    background: var(--card);
+  }
+
+  .edu-row{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    padding: 22px 24px;
+    border-bottom: 3px solid var(--ink);
+    align-items: center;
+  }
+  .edu-row:last-child{ border-bottom: none; }
+
+  .edu-row h4{
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0 0 4px;
+  }
+
+  .edu-row .place{
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .edu-stat{
+    text-align: right;
+  }
+
+  .edu-stat .num{
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    background: var(--blue);
+    color: var(--cream);
+    padding: 3px 12px;
+  }
+
+  .edu-stat .period{
+    display: block;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    margin-top: 60px;
+    background: var(--blue);
+    color: var(--cream);
+    border: 4px solid var(--ink);
+    padding: 26px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  footer .fname{
+    font-family: var(--display);
+    font-weight: 800;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  footer a{
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 620px){
+    .stamp, .role-tag, .ticket, .skill-card, .clip, .vogue-badge{
+      transform: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero block">
+    <span class="stamp postmark">FIELD NOTES — ELECTRONICS &amp; ROBOTICS</span>
+    <h1 class="name">Nuha<br>Emitiyas</h1>
+    <span class="role-tag">Embedded systems &amp; robotics builder</span>
+    <p class="pitch">I design and wire up autonomous machines — path-planning robots, motor-driven mechanisms, sensor loops — and get them working on the bench, not just on paper.</p>
+    <div class="contact-row">
+      <a class="ticket" href="mailto:nuhaemitiyas@gmail.com">nuhaemitiyas@gmail.com</a>
+      <a class="ticket" href="tel:+919656697727">+91 96566 97727</a>
+      <a class="ticket" href="https://www.linkedin.com/in/nuha-emitiyas" target="_blank" rel="noopener">linkedin.com/in/nuha-emitiyas</a>
+      <a class="ticket" href="https://github.com/nuhaemitiyas" target="_blank" rel="noopener">github.com/nuhaemitiyas</a>
+    </div>
+  </div>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-row">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="pill-list">
+          <span class="pill r">C++</span>
+          <span class="pill">Python</span>
+          <span class="pill">ROS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Tools &amp; platforms</h3>
+        <div class="pill-list">
+          <span class="pill">AutoCAD</span>
+          <span class="pill b">Creo</span>
+          <span class="pill">Proteus</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Working style</h3>
+        <div class="pill-list">
+          <span class="pill">Creative</span>
+          <span class="pill">Problem-solving</span>
+          <span class="pill b">Team player</span>
+          <span class="pill">Hardworking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project a">
+      <div class="project-head">
+        <h3>Maze Solver Robot</h3>
+        <div class="stack-tags">
+          <span class="tag">C++</span><span class="tag">PID</span><span class="tag">SLAM</span><span class="tag">A*</span><span class="tag">Embedded</span>
+        </div>
+      </div>
+      <ul>
+        <li>Built an autonomous robot that maps unknown mazes with SLAM and plans the fastest route through them with A* search.</li>
+        <li>Raised path-tracking efficiency from 24% to 56%<span class="badge-metric">+32%</span> through iterative PID tuning.</li>
+        <li>Combined live sensor readings with the path plan to hold a precise line through complex tracks.</li>
+      </ul>
+    </div>
+
+    <div class="project b">
+      <div class="project-head">
+        <h3>Line Follower Robot</h3>
+        <div class="stack-tags"><span class="tag">Python</span></div>
+      </div>
+      <ul>
+        <li>Built an autonomous robot that follows a marked path using continuous sensor feedback.</li>
+        <li>Wrote and tuned the sensing logic in Python to hold accuracy through sharp turns and crossings.</li>
+        <li>Refined precision over repeated test runs and path-planning passes.</li>
+      </ul>
+    </div>
+
+    <div class="project a">
+      <div class="project-head">
+        <h3>RoboSoccer</h3>
+        <div class="stack-tags"><span class="tag">Arduino</span><span class="tag">Motor Control</span><span class="tag">Sensors</span></div>
+      </div>
+      <ul>
+        <li>Built a remote-controlled RoboSoccer robot for precise movement and ball handling in competitive play.</li>
+        <li>Integrated motors, sensors, and control logic for accurate turning and directional response.</li>
+        <li>Tested and iterated on the build for stability and responsiveness on the field.</li>
+      </ul>
+    </div>
+
+    <div class="project b">
+      <div class="project-head">
+        <h3>Digital Clock, Mechanical Display</h3>
+        <div class="stack-tags"><span class="tag">Arduino</span><span class="tag">Servo Motors</span><span class="tag">3D Printing</span></div>
+      </div>
+      <ul>
+        <li>Designed a clock that tells time through custom 3D-printed flaps driven by servo motors.</li>
+        <li>Programmed the servo movements to flip each flap to the correct digit on schedule.</li>
+        <li>Fabricated the mechanical components and integrated them with the electronics into one working prototype.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="record">
+    <h2 class="section-title">Record</h2>
+    <div class="cork">
+      <div class="cork-cols">
+        <div>
+          <h4>Certificates</h4>
+          <div class="clip">Basics of Python Programming — Coursera<span class="when">MAY 2025</span></div>
+          <div class="clip">Mastering Microcontrollers &amp; Embedded Systems — Udemy<span class="when">APR 2026</span></div>
+          <div class="clip">Building a Basic Web Server with ESP32 — Udemy<span class="when">MAR 2027</span></div>
+        </div>
+        <div>
+          <h4>Achievements</h4>
+          <div class="clip">5+ hackathons, on and off campus<span class="when">MAY 25 – APR 26</span></div>
+          <div class="clip">Competed at IIT Ropar<span class="when">MAY 2026</span></div>
+          <div class="clip">1st Runner-Up, college debate competition<span class="when">APR 2026</span></div>
+          <div class="clip">5+ college modeling programs<span class="when">AUG 25 – MAY 26</span></div>
+          <div class="vogue-badge">
+            <span class="title">Miss Vogue</span>
+            <span class="sub">Titled for excellence in modeling, personality &amp; stage presence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-ledger">
+      <div class="edu-row">
+        <div>
+          <h4>Lovely Professional University</h4>
+          <div class="place">B.Tech, Electronics &amp; Electrical Engineering — Phagwara, Punjab</div>
+        </div>
+        <div class="edu-stat">
+          <span class="num">6.74 CGPA</span>
+          <span class="period">AUG 2025 – AUG 2029</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <h4>Indian Central School</h4>
+          <div class="place">Higher Secondary Education, PCM — Jleeb, Kuwait</div>
+        </div>
+        <div class="edu-stat">
+          <span class="num">75%</span>
+          <span class="period">MAR 2023 – MAY 2024</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <h4>Indian Central School</h4>
+          <div class="place">Secondary Education — Jleeb, Kuwait</div>
+        </div>
+        <div class="edu-stat">
+          <span class="num">80%</span>
+          <span class="period">MAR 2021 – MAY 2022</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="fname">Nuha Emitiyas</span>
+    <a href="mailto:nuhaemitiyas@gmail.com">nuhaemitiyas@gmail.com</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
